@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+100.times do
+  Post.create({ title: Faker::Book.title,
+                    body: Faker::Hipster.paragraph,
+                    category_id: rand(11) })
+end
+
+puts Cowsay.say('Generated 100 posts', 'random')
+
+# 10.times do
+#   Category.create({ title:     Faker::Book.genre })
+# end
+#
+# puts Cowsay.say('Generated 10 categories', 'random')

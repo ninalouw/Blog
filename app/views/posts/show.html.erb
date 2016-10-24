@@ -1,0 +1,8 @@
+
+<h2><%= @post.title %></h2>
+<p> <%= @post.category.title %></p>
+<p><%= @post.body %></p>
+
+  <%= link_to 'Edit', edit_post_path(@post),class: 'btn btn-info btn-xs' %>
+<%= link_to 'Delete', post_path(@post), method: :delete,
+                                        data:{confirm: 'Are you sure you want to delete this greatness?'},class: 'btn btn-danger btn-xs'  %>
