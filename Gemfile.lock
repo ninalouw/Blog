@@ -42,10 +42,16 @@ GEM
     autoprefixer-rails (6.5.1)
       execjs
     awesome_print (1.7.0)
+    bcrypt (3.1.11)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
     byebug (9.0.6)
+    cancancan (1.15.0)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -67,6 +73,8 @@ GEM
     faker (1.6.6)
       i18n (~> 0.5)
     ffi (1.9.14)
+    font-awesome-rails (4.7.0.0)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
@@ -196,12 +204,16 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   awesome_print
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   byebug
+  cancancan (~> 1.10)
+  chosen-rails
   coffee-rails (~> 4.2)
   cowsay
   factory_girl_rails
   faker
+  font-awesome-rails
   hirb
   interactive_editor
   jbuilder (~> 2.5)

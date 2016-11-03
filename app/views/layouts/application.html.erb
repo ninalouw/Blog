@@ -2,34 +2,45 @@
 <html>
   <head>
     <title>Blog</title>
-    <%= csrf_meta_tags %>
+      <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
       <div id="main-container" class="container-fluid">
          <%= render 'posts/navigation' %>
         <div class = "row">
           <div class = "col-md-12">
+              <ul class="nav nav-tabs" role="tablist">
+                 <li><%= link_to 'All Posts', posts_path %></li>
+                 <li><%= link_to 'New Post', new_post_path %></li>
+                 <li><%= link_to 'Home', home_path %></li>
 
-             <ul class="nav nav-tabs" role="tablist">
-               <li><%= link_to 'All Posts', posts_path %></li>
-               <li><%= link_to 'New Post', new_post_path %></li>
-               <li><%= link_to 'Home', home_path %></li>
-             </ul>
-
+                <% if user_signed_in? %>
+                Hello <%= link_to current_user.first_name, edit_user_path(current_user)%>
+                        |
+                      <%= link_to 'Your Favourites', favourite_list_users_path %>
+                  <li><%= link_to 'Update Password', edit_password_path(current_user)%></li>
+                  <li><%= link_to 'Sign Out', sessions_path, method: :delete %></li>
+                  <% else %>
+                   <li><%= link_to 'Sign Up', new_user_path %></li>
+                   <li><%= link_to 'Sign In', new_session_path %></li>
+                 <% end %>
+                    <hr>
+                     <%= flash[:notice] || flash[:alert] %>
+              </ul>
           </div>
         </div>
+
         <div class = "row">
           <div class = "col-md-12">
-             <%= yield %>
+                        <%= yield %>
           </div>
         </div>
+
       </div>
     </div>
-
   </body>
 </html>
