@@ -26,6 +26,8 @@ $heading-color:rgb(28, 31, 2);
 $border-radius: 18px;
 $button-border-color:rgb(50, 20, 8);
 $button-bg-color: rgb(249, 245, 242);
+$post-show-margin-top:10px;
+$post-show-margin-bottom:10px;
 
 /* entypo */
 [class*="entypo-"]:before {
@@ -54,6 +56,17 @@ h2 {
 h3{
   color:$heading-color;
 }
+h4{
+  color:rgb(65, 20, 3);
+  font:{
+    size: 18px;
+    family: 'Roboto', sans-serif;
+  }
+  margin:{
+    bottom:10px;
+    top:10px;
+  }
+}
 
 .posts{
  color: $font-body-color;
@@ -61,6 +74,31 @@ h3{
    color: $font-body-color;
    font-size: 15px;
  }
+}
+
+.star-widget{
+  color:rgb(6, 58, 80);
+  margin:{
+    bottom:$post-show-margin-bottom;
+  }
+}
+
+.tag-widget{
+  margin:{
+    bottom:$post-show-margin-bottom;
+    top:15px;
+  }
+}
+
+.post-body{
+  line-height: normal;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  text-align: justify;
+  margin:{
+    bottom:$post-show-margin-bottom;
+    top:$post-show-margin-top;
+  }
 }
 
 .btn.outline {
