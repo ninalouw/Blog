@@ -1,8 +1,26 @@
-<h2>All the Fascinating Posts</h2>
 
-<p><button> <%= link_to 'Show by Tag', tags_path  %></button></p>
+<div class = "container-fluid">
 
-    <% @posts.each do |p| %>
-    <%= link_to p.title, post_path(p) %>
-<hr>
-    <% end %>
+  <div class = "row">
+    <div class = "col-md-12">
+     <h1>Posts</h1>
+    </div>
+  </div>
+
+  <div class = "posts row">
+    <div class = "col-md-12">
+      <% @posts.each do |p| %>
+      <%= link_to p.title, post_path(p) %>
+     <hr>
+      <% end %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-md-12">
+     <button class = "btn btn-primary"> <%= link_to 'Show by Tag', tags_path  %></button>
+   </div>
+ </div>
+
+
+</div>

@@ -1,0 +1,27 @@
+
+
+<nav class="navbar  animated navbar-fixed-top navbar-mobile navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="entypo-book-open navbar-brand animated" href="/?lang=en"></a>
+    </div>
+    <div class="navbar-collapse">
+        <ul id="main-nav" class="nav navbar-nav">
+
+            <li><%= link_to 'HOME', home_path %><span class="line"></span></a></li>
+
+            <li><%= link_to 'ALL POSTS', posts_path %><span class="line"></span></a></li>
+
+            <li><%= link_to 'NEW POST', new_post_path %><span class="line"></span></a></li>
+
+            <% if user_signed_in? %>
+              <li><%= link_to 'FAVOURITES', favourite_list_users_path %><span class="line"></span></a></li>
+              <li><%= link_to 'UPDATE PASSWORD', edit_password_path(current_user)%><span class="line"></span></a></li>
+              <li><%= link_to 'SIGN OUT', sessions_path, method: :delete %><span class="line"></span></a></li>
+              <li><%= link_to 'PROFILE', edit_user_path(current_user)%><span class="line"></span></a></li>
+            <% else %>
+              <li><%= link_to 'SIGN UP', new_user_path %><span class="line"></span></a></li>
+              <li><%= link_to 'SIGN IN', new_session_path %><span class="line"></span></a></li>
+            <% end %>
+        </ul>
+    </div>
+</nav>

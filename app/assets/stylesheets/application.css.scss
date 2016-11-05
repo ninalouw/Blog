@@ -1,0 +1,115 @@
+/*
+ // * This is a manifest file that'll be compiled into application.css, which will include all the files
+ // * listed below.
+ // *
+ // * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ // * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ // *
+ // * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ // * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ // * files in this directory. Styles in this file should be added after the last require_* statement.
+ // * It is generally better to create a new file per style scope.
+ // *
+ // *= require chosen
+ // *= require_tree .
+ // *= require_self
+
+
+ /*I renamed this file application.css.scss and added these @imports in order to use Bootstrap.*/
+@import "font-awesome";
+@import "bootstrap";
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+$font-body-color:rgb(45, 38, 7);
+$heading-color:rgb(28, 31, 2);
+$border-radius: 18px;
+$button-border-color:rgb(50, 20, 8);
+$button-bg-color: rgb(249, 245, 242);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+.entypo-book-open{
+  font-size: 35px;
+}
+
+
+body{
+ padding-top: 70px;
+ font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  color:$heading-color;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color:$heading-color;
+}
+
+h3{
+  color:$heading-color;
+}
+
+.posts{
+ color: $font-body-color;
+ a {
+   color: $font-body-color;
+   font-size: 15px;
+ }
+}
+
+.btn.outline {
+	background: none;
+	padding: 12px 22px;
+}
+.btn-primary{
+  background-color:$button-bg-color;
+  border-color: $button-border-color;
+  color: $button-border-color;
+  a {
+    color:$button-border-color;
+  }
+}
+
+.btn-danger{
+  background-color:$button-bg-color;
+  border-color: $button-border-color;
+  color: $button-border-color;
+  a {
+    color:$button-border-color;
+  }
+
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
+  background-color:rgb(177, 77, 74);
+  border-color: $button-border-color;
+}
+
+.btn-primary:hover{
+  background-color:rgb(204, 176, 160);
+  border-color: $button-border-color;
+}
+
+
+.btn-primary.outline {
+	border: 2px solid $button-border-color;
+	color:$button-bg-color;
+
+}
+
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+	color:rgb(47, 22, 13);
+	border-color: $button-border-color;
+  background-color:$button-bg-color;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+	border-color: $button-border-color;
+	color: $button-bg-color;
+	box-shadow: none;
+}
