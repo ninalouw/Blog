@@ -54,7 +54,15 @@ h2 {
 }
 
 h3{
-  color:$heading-color;
+  color:rgb(65, 20, 3);
+  font:{
+    size: 18px;
+    family: 'Roboto', sans-serif;
+  }
+  margin:{
+    bottom:10px;
+    top:10px;
+  }
 }
 h4{
   color:rgb(65, 20, 3);

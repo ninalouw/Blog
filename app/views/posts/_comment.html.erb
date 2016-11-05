@@ -1,37 +1,50 @@
 
-<h3 class = "text-muted"> Create a New Comment</h3>
-  <div id="error_explanation">
-    <%= @comment.errors.full_messages.join(', ') %>
+<div class = "container-fluid">
+
+  <h3> Create a New Comment</h3>
+    <div id="error_explanation">
+      <%= @comment.errors.full_messages.join(', ') %>
+    </div>
+
+     <%= form_for [@post, @comment] do |f| %>
+     <div class = "row">
+      <div class="field form-group">
+         <div class = "col-md-1">
+         <%= f.label :body, class: 'control-label' %>
+         </div>
+         <div class = "col-md-4">
+          <%= f.text_area :body, class: 'form-control' %>
+         </div>
+      </div>
+    </div>
+
+     <div class = "row">
+       <div class = "col-md-2">
+       </div>
+        <div class="actions form-group col-md-10">
+          <div class="btn btn-primary center-align">
+            <%= f.submit 'Comment' %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+<!-- shows comments -->
+    <% if @post.comments.size != 0 %>
+  <h3>Comments</h3>
+      <div class = "row">
+        <div class = "col-md-12">
+            <% @post.comments.each do |c| %>
+            <%= c.body %>
+        </div>
+      </div>
+       <div class = "row">
+         <div class = "col-md-12">
+                <% if can? :delete, c  %>
+                  <%= link_to 'Delete', post_comment_path(@post, c),class: 'btn btn-info btn-xs', method: :delete, data:{confirm: 'Are you sure you want to delete this greatness?'},class: 'btn btn-danger btn-xs'  %>
+                 <% end %>
+            <% end %>
+      <% end %>
+      </div>
+   </div>
   </div>
-
-    <%= form_for [@post, @comment] do |f| %>
-
-    <div class="field form-group">
-      <%= f.label :body, class: 'col-sm-1 control-label' %>
-      <div class="col-sm-6">
-        <%= f.text_area :body, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="actions form-group">
-      <div class=" col-sm-11-offset-1 col-sm-11 btn btn-xs">
-        <%= f.submit %>
-      </div>
-    </div>
-    <% end %>
-
-   <% if @post.comments.size != 0 %>
-<h3 class = "text-muted">Comments</h3>
-<div>
-      <% @post.comments.each do |c| %>
-      <%= c.body %>
-</div>
-<div>
-    <% if can? :delete, c  %>
-      <%= link_to 'Delete', post_comment_path(@post, c),class: 'btn btn-info btn-xs', method: :delete,
-                                            data:{confirm: 'Are you sure you want to delete this greatness?'},class: 'btn btn-danger btn-xs'  %>
-
-     <% end %>
-</div>
-   <% end %>
-  <% end %>
