@@ -1,62 +1,60 @@
 
 <!-- Post partial, everything related to my post -->
 <div class ="container-fluid">
-
-  <div class = "row">
-    <div class = "col-md-12">
-      <h2><%= @post.title %></h2>
+<div id="<%= dom_id(@post) %>">
+    <div class = "row">
+      <div class = "col-md-12">
+        <h2><%= @post.title %></h2>
+      </div>
     </div>
-  </div>
 
-  <div class = "row">
-    <div class = "col-md-12">
-      <h4><%= @post.category.title %></h4>
+    <div class = "row">
+      <div class = "col-md-12">
+        <h4><%= @post.category.title %></h4>
+      </div>
     </div>
-  </div>
 
-  <div class = "row">
-    <div class = "col-md-2">
-     <p>By: &nbsp<%= @post.user_full_name %></p>
+    <div class = "row">
+      <div class = "col-md-2">
+       <p>By: &nbsp<%= @post.user_full_name %></p>
+      </div>
+      <div class = "col-md-10">
+        <%= @post.created_at.strftime("%d %b %Y") %>
+      </div>
     </div>
-    <div class = "col-md-10">
-      <%= @post.created_at.strftime("%d %b %Y") %>
+
+    <div class = "row">
+      <div class = "col-md-12">
+        <section class = "star-widget">
+          Rating: <%= average_star(@post) %>
+        </section>
+     </div>
     </div>
-  </div>
 
-  <div class = "row">
-    <div class = "col-md-12">
-      <section class = "star-widget">
-        Rating: <%= average_star(@post) %>
-      </section>
-   </div>
-  </div>
-
-  <div class = "row">
-    <div class = "col-md-12 post-body">
-      <%= @post.body %>
+    <div class = "row">
+      <div class = "col-md-12 post-body">
+        <%= @post.body %>
+      </div>
     </div>
-  </div>
 
 
-  <div class = "row">
-    <div class = "col-md-12">
-    <% if can? :manage, @post  %>
-      <%= link_to 'Edit', edit_post_path(@post),class: 'btn btn-primary' %>
-      <%= link_to 'Delete', post_path(@post), method: :delete,
-                                            data:{confirm: 'Are you sure you want to delete?'},class: 'btn btn-danger'  %>
-    <% end %>
-
-    <% if user_signed_in? && can?(:favourite, @post) %>
-      <% if @favourite.present? %>
-        <%= link_to 'Unfavourite', post_favourite_path(@post,@favourite), method: :delete, class: 'btn btn-primary' %>
-      <% else %>
-        <%= link_to 'Favourite', post_favourites_path(@post), method: :post, class: 'btn btn-primary' %>
+    <div class = "row">
+      <div class = "col-md-12">
+      <% if can? :manage, @post  %>
+        <%= link_to 'Edit', edit_post_path(@post),class: 'btn btn-primary' %>
+        <%= link_to 'Delete', post_path(@post), method: :delete,
+                                              data:{confirm: 'Are you sure you want to delete?'},class: 'btn btn-danger'  %>
       <% end %>
-  <% end %>
 
-  (<%= pluralize @post.favourites.count, "favourite" %>)
+   <!-- favourites were here  -->
+   <div class= "favourite-button">
+     <%= render '/favourites/favourite', post: @post %>
    </div>
-  </div>
+
+    
+     </div>
+    </div>
+</div>
 
   <div class = "row">
   <div class = 'chosen-select col-md-12'>

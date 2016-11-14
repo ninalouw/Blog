@@ -1,0 +1,17 @@
+<div class = "col-xs-12" id="<%= dom_id(c)%>">
+
+    <div class = "col-xs-11">
+     <%= c.body %>
+    </div>
+
+
+  <div class = "col-xs-1">
+        <% if can? :delete, c  %>
+          <%= link_to 'Delete', post_comment_path(@post, c),method: :delete,
+                                                             remote: true,
+                                                             data:{confirm: 'Are you sure you want to delete?'},
+                                                             class: 'btn btn-danger btn-xs'  %>
+         <% end %>
+  </div>
+    <hr>
+</div>

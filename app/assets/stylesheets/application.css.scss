@@ -10,13 +10,13 @@
  // * files in this directory. Styles in this file should be added after the last require_* statement.
  // * It is generally better to create a new file per style scope.
  // *
+ // *= require font-awesome 
  // *= require chosen
- // *= require_tree .
- // *= require_self
 
 
  /*I renamed this file application.css.scss and added these @imports in order to use Bootstrap.*/
 @import "font-awesome";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 @import url(http://weloveiconfonts.com/api/?family=entypo);

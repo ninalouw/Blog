@@ -26,12 +26,24 @@ class PostsController < ApplicationController
   def show
     #find_post method gets called here
     @comment = Comment.new
-    @favourite = @post.favourite_for(current_user)
+    # @favourite = @post.favourite_for(current_user)
+    respond_to do |format|
+      format.html { render }
+      format.text { render }
+      format.xml  { render xml: @post}
+      format.json { render json: @post.to_json(include: :comments)}
+    end
   end
 
   #displays all the posts
   def index
     @posts = Post.order(created_at: :desc)
+    respond_to do |format|
+      format.html { render }
+      format.text { render }
+      format.xml  { render xml: @posts}
+      format.json { render json: @posts.to_json}
+    end
   end
 
 #gets a post for editing

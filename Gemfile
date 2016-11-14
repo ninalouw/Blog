@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 #gems for bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-
+gem 'rack-cors'
 #gems for creating random content
 gem 'cowsay'
 gem 'faker'
