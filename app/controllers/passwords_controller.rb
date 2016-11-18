@@ -9,7 +9,6 @@ class PasswordsController < ApplicationController
   end
 
   def index
-
   end
 
   def edit
@@ -19,35 +18,32 @@ class PasswordsController < ApplicationController
 
   def update
     @user = User.find current_user
-    current_password = params.dig(:user,:current_password)
+    current_password = params.dig(:user, :current_password)
     if @user && @user.authenticate(current_password)
-    if @user.update user_params
-      redirect_to home_path, notice: 'Password has been updated!'
+      if @user.update user_params
+        redirect_to home_path, notice: 'Password has been updated!'
+      else
+        flash.now[:alert] = 'Failed to update your password!'
+        render :edit
+      end
     else
-      flash.now[:alert] = 'Failed to update your password!'
+      flash.now[:alert] = 'Wrong password!'
       render :edit
-    end
-    else
-    flash.now[:alert] = 'Wrong password!'
-    render :edit
    end
   end
 
-#This is going to show them the edit
+  # This is going to show them the edit
   def forgot_password
-  #verify user
-   @user = User.find_by(email:params[:email], token: params[:token])
+    # verify user
+    @user = User.find_by(email: params[:email], token: params[:token])
     if @user
       render
     else
-      redirect_to home_path, alert: "Go away, wrong credentials!"
+      redirect_to home_path, alert: 'Go away, wrong credentials!'
     end
   end
 
-
-
-
-##this method is not finished!!
+  # #this method is not finished!!
   def update_password
     @email = params.dig(:user, :email)
     @user = User.find_by(email: @email)
@@ -60,16 +56,15 @@ class PasswordsController < ApplicationController
   end
 
   def link
-    @user = User.find_by(email:params[:email])
+    @user = User.find_by(email: params[:email])
     if @user
-       @user.update(token: rand(1000))
+      @user.update(token: rand(1000))
     else
-       redirect_to home_path, alert: "Go away, wrong credentials!"
+      redirect_to home_path, alert: 'Go away, wrong credentials!'
     end
   end
 
   def user_params
-    user_params = params.require(:user).permit([:first_name,:last_name,:email,:password,:password_confirmation])
+    user_params = params.require(:user).permit([:first_name, :last_name, :email, :password, :password_confirmation])
   end
-
 end

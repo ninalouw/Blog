@@ -1,12 +1,12 @@
 class StarsController < ApplicationController
-before_action :authenticate_user
+  before_action :authenticate_user
 
   def create
     star = Star.new star_params
     star.user = current_user
     star.post = post
     if star.save
-      redirect_to post_path(post), notice: "Star!"
+      redirect_to post_path(post), notice: 'Star!'
     else
       redirect_to post_path(post), alert: star.error_description
     end
@@ -26,8 +26,6 @@ before_action :authenticate_user
       redirect_to post_path(post), alert: star.error_description
     end
   end
-
-
 
   def star_params
     params.require(:star).permit(:star_count)

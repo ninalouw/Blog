@@ -2,15 +2,14 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     user ||= User.new
 
-  cannot :favourite, Post do |p|
-     p.user == user
-   end
+    cannot :favourite, Post do |p|
+      p.user == user
+    end
 
-   can :favourite, Post do |p|
-       user != p.user
+    can :favourite, Post do |p|
+      user != p.user
     end
 
     can :manage, Post do |p|
@@ -22,9 +21,9 @@ class Ability
     end
 
     if user.admin?
-     can :manage, :all
+      can :manage, :all
     else
-     can :read, :all
+      can :read, :all
     end
 
     # Define abilities for the passed in user here. For example:
