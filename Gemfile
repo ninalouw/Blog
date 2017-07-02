@@ -37,6 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'cancancan', '~> 1.10'
 
+# styling emails with roadie
+gem 'roadie', '~> 3.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
