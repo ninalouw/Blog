@@ -59,6 +59,7 @@ group :development do
   gem 'interactive_editor'
   gem 'awesome_print'
   gem 'hirb'
+  gem "letter_opener"
 
 end
 

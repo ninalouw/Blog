@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
+      UserMailer.signup_confirmation(@user).deliver
       redirect_to home_path, notice: 'Thanks for signing up!'
     else
       render :new

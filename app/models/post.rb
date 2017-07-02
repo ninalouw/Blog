@@ -35,6 +35,8 @@ class Post < ApplicationRecord
   end
 
   def favourite_for(user)
-    favourites.find_by(user: user)
+    # favourites.find_by(user: user)
+    favourites.find_by_user_id(user)
   end
+  
 end

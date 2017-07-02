@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def show
     # find_post method gets called here
     @comment = Comment.new
-    # @favourite = @post.favourite_for(current_user)
+    @favourite = @post.favourite_for(current_user)
     respond_to do |format|
       format.html { render }
       format.text { render }

@@ -4,7 +4,6 @@
      <%= c.body %>
     </div>
 
-
   <div class = "col-xs-1">
         <% if can? :delete, c  %>
           <%= link_to 'Delete', post_comment_path(@post, c),method: :delete,

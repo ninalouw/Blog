@@ -43,7 +43,7 @@ class PasswordsController < ApplicationController
     end
   end
 
-  # #this method is not finished!!
+  
   def update_password
     @email = params.dig(:user, :email)
     @user = User.find_by(email: @email)
